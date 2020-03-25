@@ -12,7 +12,7 @@ def findWord(word):
         userConfirmation = input("Did you mean %s instead? Enter Y or N" % suggestedWord)
         print(userConfirmation)
         if (userConfirmation.lower() == 'y') or (userConfirmation.lower() == 'yes'):
-            print(findWord(suggestedWord.lower()))
+            print(findWord(suggestedWord.lower())) 
         else:
             return "Word not found."
     else:
