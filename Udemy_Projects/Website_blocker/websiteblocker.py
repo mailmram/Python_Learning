@@ -7,7 +7,6 @@ block_list = ["www.facebook.com", "www.youtube.com"]
 
 while True:
     if dt(dt.now().year,dt.now().month,dt.now().day,8) < dt.now() < dt(dt.now().year,dt.now().month,dt.now().day,16):
-        print("Working hours...")
         with open(hostpath,'r+') as file:
             content=file.read()
             for website in block_list:
@@ -23,4 +22,3 @@ while True:
                 if not any(website in line for website in block_list):
                     file.write(line)
             file.truncate()
-        print("Fun hours...")
