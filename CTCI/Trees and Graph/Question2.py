@@ -3,21 +3,34 @@ class node:
         self.data = data
         self.left = None
         self.right = None
-    
-    def insert(self, root, insertnode):
+
+class bst:
+    def __init__(self, root):
         if root is None:
-            root = insertnode
+            self.root = None
         else:
-            if root.data < insertnode.data:
-                if root.right is None:
-                    root.right = insertnode
+            self.root = node(root)
+
+    def insert(self, insertnode):
+        if self.root is None:
+            self.root = insertnode
+        else:
+            if self.root.data < insertnode.data:
+                if self.root.right is None:
+                    self.root.right = insertnode
                 else:
-                    self.insert(root.right, insertnode)
+                    self.root = self.root.right
+                    self.insert(insertnode)
             else:
-                if root.left is None:
-                    root.left = insertnode
+                if self.root.left is None:
+                    self.root.left = insertnode
                 else:
-                    self.insert(root.left, insertnode)
+                    self.root = self.root.left
+                    self.insert(insertnode)
+                    
+
+    def traverse(self):
+        self.inOrderTraversal(self.root)
     
     def inOrderTraversal(self, node):
         if node is not None:
@@ -68,18 +81,29 @@ class node:
             return max(self.height(root.left), self.height(root.right))+1
 
 
-rootNode = node(50)
-rootNode.insert(rootNode, node(49))
-rootNode.insert(rootNode, node(51))
-rootNode.insert(rootNode, node(10))
-rootNode.insert(rootNode, node(5))
-rootNode.insert(rootNode, node(4))
-rootNode.insert(rootNode, node(6))
-rootNode.insert(rootNode, node(11))
-rootNode.insert(rootNode, node(13))
-rootNode.insert(rootNode, node(8))
-rootNode.insert(rootNode, node(7))
-rootNode.insert(rootNode, node(100))
-rootNode = rootNode.deleteNode(20, rootNode)
-rootNode.inOrderTraversal(rootNode)
-print(rootNode.height(rootNode))
+myArray = [1,2,3,4,5,6,7,8,9,10]
+#myBst.traverse()
+def minHeight(myBst, myArray, start, end):
+    mid = int((start + end)/2)
+    myBst.insert(node(myArray[mid]))
+    myBst.traverse()
+    myBst = minHeight(myBst, myArray, start, 3)  
+    #myBst = minHeight(myBst, myArray, mid+1, end)
+    return myBst
+myBst = bst(None)
+myBst = minHeight(myBst, myArray, 0, 9)
+# rootNode = node(50)
+# myBst = bst(50)
+# myBst.insert(rootNode, node(49))
+# myBst.insert(rootNode, node(51))
+# myBst.insert(rootNode, node(10))
+# myBst.insert(rootNode, node(5))
+# myBst.insert(rootNode, node(4))
+# myBst.insert(rootNode, node(6))
+# myBst.insert(rootNode, node(11))
+# myBst.insert(rootNode, node(13))
+# myBst.insert(rootNode, node(8))
+# myBst.insert(rootNode, node(7))
+# myBst.insert(rootNode, node(100))
+# myBst.inOrderTraversal(rootNode)
+# print(myBst.height(rootNode)) 
