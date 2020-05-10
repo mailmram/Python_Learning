@@ -1,5 +1,8 @@
 
-on: push
+on: 
+  push:
+     paths:
+      - 'myangular/my-app/*'
 name: Build Angular
 jobs:
   build:
@@ -29,5 +32,5 @@ jobs:
       - name: Push Build to Releases
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "dist/*"
+          artifacts: "myangular/my-app/dist/*"
           token: ${{ secrets.TOKEN }}
