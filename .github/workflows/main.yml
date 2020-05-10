@@ -1,7 +1,4 @@
-on: 
-  push:
-     paths:
-      - 'myangular/my-app/**'
+on: push
 name: Build Angular
 jobs:
   build:
@@ -28,6 +25,7 @@ jobs:
         run: |
           npm i
           npm run build
+        working-directory: myangular/my-app/
       - name: Push Build to Releases
         uses: ncipollo/release-action@v1
         with:
