@@ -2,7 +2,7 @@
 on: 
   push:
      paths:
-      - 'myangular/my-app/*'
+      - 'myangular/my-app/'
 name: Build Angular
 jobs:
   build:
@@ -12,7 +12,7 @@ jobs:
         node-version: [12.16.3]
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       - name: Cache node modules
         uses: actions/cache@v1
