@@ -1,4 +1,7 @@
-on: push
+on: 
+  push:
+     paths:
+      - 'myangular/my-app/**'
 name: Build Angular
 jobs:
   build:
