@@ -27,7 +27,7 @@ jobs:
           npm run build
         working-directory: myangular/my-app/
       - name: Push Build to Releases
-        uses: ncipollo/release-action@v1
+        uses: stefanzweifel/git-auto-commit-action@v4.2.0
         with:
-          artifacts: "dist/*"
+          file_pattern: "dist/*"
           token: ${{ secrets.TOKEN }}
